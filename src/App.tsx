@@ -3,14 +3,37 @@ import ScoreBoard from "./components/ScoreBoard";
 import rules from "./assets/images/image-rules-bonus.svg";
 import { useState } from "react";
 
+export type SignType =
+  | "rock"
+  | "scissors"
+  | "paper"
+  | "spock"
+  | "lizard"
+  | null;
+
+export interface GameType {
+  player: SignType;
+  computer: SignType;
+  result: string;
+  score: number
+}
+
 function App() {
+
   const [isRulesOpen, setIsRulesOpen] = useState(false);
-  const [score, setScore] = useState(0)
+
+  const [gameData, setGameData] = useState<GameType>({
+    player: null,
+    computer: null,
+    result: "",
+    score: 0
+  });
+
   return (
     <>
       <div className="bg-gradient-to-b from-neutral-bg-from to-neutral-bg-to h-screen pt-14">
-        <ScoreBoard score={score} />
-        <GameBoard setScore={setScore} />
+        <ScoreBoard score={gameData.score} />
+        <GameBoard setGameData={setGameData} gameData={gameData} />
         <button
           className="mt-28 mr-10 float-right text-white font-BarlowSemi border-2 border-neutral-header-outline px-8 py-1 rounded-lg text-lg tracking-widest uppercase"
           onClick={() => setIsRulesOpen(true)}

@@ -14,6 +14,7 @@ export default {
         insideSm: "inset 0 0.4rem rgba(0, 0, 0, 0.2)",
         insideLg: "inset 0 0.7rem rgba(0, 0, 0, 0.2)",
         outside: "0 0.4rem rgba(0, 0, 0, 0.2)",
+        winner: "0 0 0 40px #293251, 0 0 0 80px #232c4b, 0 0 0 130px #1e2949",
       },
       backgroundImage: {
         pentagon: "url('src/assets/images/bg-pentagon.svg')",
