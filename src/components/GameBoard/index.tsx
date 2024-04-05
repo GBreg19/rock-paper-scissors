@@ -3,6 +3,7 @@ import { signsData } from "../helper/SignsData";
 import Sign from "./widgets/Sign";
 import { GameType } from "@/App";
 import useGameBoard from "./GameBoard.hooks";
+import { Result } from "./widgets";
 
 interface Props {
   setGameData: React.Dispatch<SetStateAction<GameType>>;
@@ -14,9 +15,9 @@ const GameBoard: React.FC<Props> = ({ setGameData, gameData }) => {
 
   return (
     <div
-      className={`h-[370px] m-auto mt-40 relative ${
+      className={`md:h-[370px] h-[220px] m-auto relative md:mb-0 mb-52 ${
         gameData.player === null
-          ? "w-[370px]"
+          ? "md:w-[370px] w-[220px]"
           : "w-full flex justify-center gap-20"
       } `}
     >
@@ -28,53 +29,45 @@ const GameBoard: React.FC<Props> = ({ setGameData, gameData }) => {
           })}
         </div>
       ) : (
-        <div className="flex gap-20">
-          <div className="flex flex-col justify-between items-center gap-14">
-            <h1 className="text-2xl text-white font-BarlowBold uppercase tracking-widest z-50">
-              you picked
-            </h1>
-            {playerSign ? (
-              <Sign
-                data={playerSign}
-                className="w-72 h-72 border-[35px] shadow-insideLg"
-                winner={gameData.result === 'you win'}
-              />
-            ) : null}
-          </div>
-          {gameData.player !== null && gameData.computer !== null && (
-            <div className="flex flex-col gap-5 justify-center z-50">
-              <p className="uppercase text-white text-5xl font-BarlowBold tracking-wider">
-                {gameData.result}
-              </p>
-              <button
-                onClick={() =>
-                  setGameData((prev) => ({
-                    ...prev,
-                    player: null,
-                    computer: null,
-                    result: "",
-                  }))
-                }
-                className="uppercase text-black bg-white w-full py-2 font-BarlowSemi tracking-widest rounded-lg text-lg"
-              >
-                play again
-              </button>
+        <div className="flex md:flex-row flex-col gap-20">
+          <div className="flex justify-between items-center md:gap-28 gap-16">
+            <div className="flex md:flex-col flex-col-reverse  justify-between items-center md:gap-14 gap-7">
+              <h1 className="md:text-2xl tex-lg text-white font-BarlowBold uppercase tracking-widest z-50">
+                you picked
+              </h1>
+              {playerSign ? (
+                <Sign
+                  data={playerSign}
+                  className="md:w-72 md:h-72 md:border-[35px] w-32 h-32 border-[20px]  md:shadow-insideLg shadow-insideSm"
+                  winner={gameData.result === "you win"}
+                />
+              ) : null}
             </div>
-          )}
-          <div className="flex flex-col justify-between items-center gap-14">
-            <h1 className="text-2xl text-white font-BarlowBold uppercase tracking-widest z-50">
-              the house picked
-            </h1>
-            {computerSign ? (
-              <Sign
-                data={computerSign}
-                className="w-72 h-72 border-[35px] shadow-insideLg"
-                winner={gameData.result === 'you lose'}
-              />
-            ) : (
-              <div className="w-52 h-52 rounded-full bg-black opacity-15 mb-10"></div>
-            )}
+            <Result
+              gameData={gameData}
+              setGameData={setGameData}
+              className="md:block hidden"
+            />
+            <div className="flex md:flex-col flex-col-reverse  justify-between items-center md:gap-14 gap-7">
+              <h1 className="md:text-2xl tex-lg text-white font-BarlowBold uppercase tracking-widest z-50 justify-start">
+                the house picked
+              </h1>
+              {computerSign ? (
+                <Sign
+                  data={computerSign}
+                  className="md:w-72 md:h-72 md:border-[35px] w-32 h-32 border-[20px] md:shadow-insideLg shadow-insideSm"
+                  winner={gameData.result === "you lose"}
+                />
+              ) : (
+                <div className="md:w-72 md:h-72 w-32 h-32 rounded-full bg-black opacity-15"></div>
+              )}
+            </div>
           </div>
+          <Result
+            gameData={gameData}
+            setGameData={setGameData}
+            className="md:hidden block w-2/3 m-auto text-center"
+          />
         </div>
       )}
     </div>

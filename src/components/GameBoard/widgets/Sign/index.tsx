@@ -26,20 +26,20 @@ const Sign: React.FC<Props> = ({ setGameData, className, data, winner }) => {
   };
 
   return (
-    <div className={`${winner ? "shadow-winner rounded-full" : ""}`}>
+    <div className={`${winner ? "md:shadow-winnerLg shadow-winnerSm rounded-full" : "z-50"}`}>
       <button
         type="button"
         onClick={onSignClickHandler}
         className={` ${border} rounded-full flex justify-center items-center bg-white  ${
           className
             ? className
-            : `absolute ${position} w-40 h-40 border-[20px] shadow-insideSm`
+            : `absolute ${position} md:w-40 md:h-40 w-24 h-24 md:border-[20px] border-[12px] shadow-insideSm`
         } `}
       >
         <img
           src={img}
           alt="sign icon"
-          className={`${className ? "w-24" : ""}`}
+          className={`${className ? "md:w-24 w-10" : "md:w-auto w-9"}`}
         />
       </button>
     </div>
