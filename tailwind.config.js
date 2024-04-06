@@ -15,13 +15,14 @@ export default {
         insideLg: "inset 0 0.7rem rgba(0, 0, 0, 0.2)",
         outside: "0 0.4rem rgba(0, 0, 0, 0.2)",
         winnerSm:
-          "0 0 0 20px rgba(41, 50, 81, 1), 0 0 0 50px rgba(35, 44, 75, 1), 0 0 0 80px rgba(30, 41, 73, 1)",
+          "0 0 0 20px rgba(255, 255, 255, 0.1), 0 0 0 50px rgba(255, 255, 255, 0.1), 0 0 0 80px rgba(255, 255, 255, 0.1)",
 
         winnerLg:
-          "0 0 0 60px rgba(41, 50, 81, 1), 0 0 0 140px rgba(35, 44, 75, 1), 0 0 0 230px rgba(30, 41, 73, 1)",
+          "0 0 0 60px rgba(255, 255, 255, 0.1), 0 0 0 140px rgba(255, 255, 255, 0.1), 0 0 0 230px rgba(255, 255, 255, 0.1)",
       },
       backgroundImage: {
         pentagon: "url('src/assets/images/bg-pentagon.svg')",
+        triangle: "url('src/assets/images/bg-triangle.svg')"
       },
       colors: {
         primary: {

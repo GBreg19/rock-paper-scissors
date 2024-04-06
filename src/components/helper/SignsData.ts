@@ -8,7 +8,8 @@ export interface signDataType {
   id: number;
   title: string;
   img: string;
-  position: string;
+  positionRegular?: string,
+  positionBonus: string;
   border: string;
 }
 
@@ -17,7 +18,8 @@ export const signsData = [
     id: 1,
     title: "scissors",
     img: scissorsIcon,
-    position: "md:-top-20 -top-10 left-1/2 -translate-x-1/2",
+    positionRegular: 'md:-top-8 -top-5 md:-right-8 -right-5',
+    positionBonus: "md:-top-20 -top-10 left-1/2 -translate-x-1/2",
     border:
       "border-primary-scissors-gradient-from to-primary-scissors-gradient-to",
   },
@@ -25,28 +27,30 @@ export const signsData = [
     id: 2,
     title: "paper",
     img: paperIcon,
-    position: "md:top-20 top-12 md:-right-20 -right-10",
+    positionRegular: 'md:-top-8 -top-5 md:-left-8 -left-5',
+    positionBonus: "md:top-20 top-12 md:-right-20 -right-10",
     border: "border-primary-paper-gradient-from to-primary-paper-gradient-to",
   },
   {
     id: 3,
     title: "rock",
     img: rockIcon,
-    position: "md:-bottom-20 -bottom-10 right-0",
+    positionRegular: 'md:bottom-10 bottom-5 left-1/2 -translate-x-1/2',
+    positionBonus: "md:-bottom-20 -bottom-10 right-0",
     border: "border-primary-rock-gradient-from to-primary-rock-gradient-to",
   },
   {
     id: 4,
     title: "lizard",
     img: lizardIcon,
-    position: "md:-bottom-20 -bottom-10 left-0",
+    positionBonus: "md:-bottom-20 -bottom-10 left-0",
     border: "border-primary-lizard-gradient-from to-primary-lizard-gradient-to",
   },
   {
     id: 5,
     title: "spock",
     img: spockIcon,
-    position: "md:top-20 top-12 md:-left-20 -left-10",
+    positionBonus: "md:top-20 top-12 md:-left-20 -left-10",
     border: "border-primary-cyan-gradient-from to-primary-cyan-gradient-to ",
   },
 ];

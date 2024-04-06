@@ -4,20 +4,22 @@ import { GameType, SignType } from "@/App";
 
 interface Props {
   setGameData?: React.Dispatch<SetStateAction<GameType>>;
+  gameData?: GameType;
   className?: string;
   data: signDataType;
   winner?: boolean;
 }
 
-const Sign: React.FC<Props> = ({ setGameData, className, data, winner }) => {
-  const { title, border, position, img } = data;
+const Sign: React.FC<Props> = ({ setGameData,gameData, className, data, winner }) => {
+  const { title, border, positionRegular, positionBonus, img } = data;
 
   const onSignClickHandler = () => {
     if (!setGameData) return;
     setGameData((prev) => ({ ...prev, player: title as SignType }));
 
     setTimeout(() => {
-      const randomNumber = Math.floor(Math.random() * 5) + 1;
+      const signQuantity = gameData?.isRegular ? 3 : 5
+      const randomNumber = Math.floor(Math.random() * signQuantity) + 1;
       const computerSign = signsData.find(
         (sign) => sign.id === randomNumber
       )?.title;
@@ -26,14 +28,18 @@ const Sign: React.FC<Props> = ({ setGameData, className, data, winner }) => {
   };
 
   return (
-    <div className={`${winner ? "md:shadow-winnerLg shadow-winnerSm rounded-full" : "z-50"}`}>
+    <div
+      className={`${
+        winner ? "md:shadow-winnerLg shadow-winnerSm rounded-full" : "z-50"
+      }`}
+    >
       <button
         type="button"
         onClick={onSignClickHandler}
-        className={` ${border} rounded-full flex justify-center items-center bg-white  ${
+        className={` ${border} rounded-full flex justify-center items-center bg-white outline-none  ${
           className
             ? className
-            : `absolute ${position} md:w-40 md:h-40 w-24 h-24 md:border-[20px] border-[12px] shadow-insideSm`
+            : `absolute ${gameData?.isRegular ? positionRegular : positionBonus} md:w-40 md:h-40 w-24 h-24 md:border-[20px] border-[12px] shadow-insideSm`
         } `}
       >
         <img
